@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egiubell <egiubell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mivendit <mivendit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:13:49 by egiubell          #+#    #+#             */
-/*   Updated: 2023/06/06 16:36:22 by egiubell         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:22:41 by mivendit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,9 @@ int get_map(char *path, t_game *game)
 	close (fd);
 	check_errors(game);
 	return (0);
+}
+
+void final_animation(t_game *game)
+{
+	
 }

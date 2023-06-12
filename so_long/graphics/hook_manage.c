@@ -6,7 +6,7 @@
 /*   By: mivendit <mivendit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 20:06:43 by egiubell          #+#    #+#             */
-/*   Updated: 2023/06/09 00:36:40 by mivendit         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:09:08 by mivendit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,21 @@ int hook_manage(int keycode, t_game *game)
         draw_move(game);
     }
     return (0);
+}
+
+void exit_frame(t_game *game, int i, int j)
+{
+    if(game->vars->index_collect != 0)
+        mlx_put_image_to_window(game->graph.mlx, game->graph.win, game->graph.img_exit1, j, i);
+    else if(game->vars->index_collect == 0)
+        mlx_put_image_to_window(game->graph.mlx, game->graph.win, game->graph.img_exit, j, i);
+}
+
+void enemy_frame(t_game *game, int i, int j)
+{
+    mlx_put_image_to_window(game->graph.mlx, game->graph.win, game->graph.img_enemy, j, i);
+    if (game->enemy_frame == 1)
+        mlx_put_image_to_window(game->graph.mlx, game->graph.win, game->graph.img_enemy, j, i);
+    else if (game->enemy_frame == 2)
+        mlx_put_image_to_window(game->graph.mlx, game->graph.win, game->graph.img_enemy2, j, i);
 }

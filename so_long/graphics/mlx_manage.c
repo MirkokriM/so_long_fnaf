@@ -6,14 +6,14 @@
 /*   By: mivendit <mivendit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:54:17 by egiubell          #+#    #+#             */
-/*   Updated: 2023/06/09 01:00:38 by mivendit         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:24:28 by mivendit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../so_long.h"
 
 int	close_win(t_graph *graph)
-{
+{   
 	mlx_destroy_window(graph->mlx, graph->win);
     free(graph->mlx);
 	ft_printf("Game Closed\n");
@@ -21,8 +21,9 @@ int	close_win(t_graph *graph)
 }
 
 int	close_winning(t_graph *graph)
-{
-	mlx_destroy_window(graph->mlx, graph->win);
+{   
+
+    mlx_destroy_window(graph->mlx, graph->win);
     free(graph->mlx);
 	ft_printf("U WIN! LMAO\n");
     ft_printf("Move Counter: %d\n", graph->index_move+1);
@@ -59,27 +60,17 @@ char* select_random_collect() {
 
 int update_enemy_animation(t_game *game)
 {
-	// Aggiorna il timer dell'animazione dei nemici
 	game->enemy_animation_timer += FRAMERATE;
-
-	// Controlla se è trascorso abbastanza tempo per passare al prossimo frame dell'animazione
+    
 	if (game->enemy_animation_timer >= ANIMATIONDELAY)
 	{
-		// Aggiorna il frame dell'animazione dei nemici
 		if (game->enemy_frame == 1)
 			game->enemy_frame = 2;
 		else
 			game->enemy_frame = 1;
-
-		// Reimposta il timer dell'animazione
 		game->enemy_animation_timer = 0;
 	}
-
-	// Ridisegna la schermata di gioco
-    //mlx_clear_window(game->graph.mlx, game->graph.win);
 	place_image(game);
-    //draw_move(game);
-
 	return (0);
 }
 
@@ -94,13 +85,16 @@ void mlx_manage(t_game *game)
     game->y = (game->vars->line * TILESIZE);
     
     game->graph.mlx = mlx_init();
-    game->graph.win = mlx_new_window(game->graph.mlx, game->x, game->y, "So_long");
+    game->graph.win = mlx_new_window(game->graph.mlx, game->x, game->y, "It's been So_long");
     game->graph.img_terrain = mlx_xpm_file_to_image(game->graph.mlx, TERRAIN, &img_width, &img_height);
     game->graph.img_wall = mlx_xpm_file_to_image(game->graph.mlx, WALL, &img_width, &img_height);
     game->graph.img_player = mlx_xpm_file_to_image(game->graph.mlx, PLAYER, &img_width, &img_height);
+    game->graph.img_player2 = mlx_xpm_file_to_image(game->graph.mlx, PLAYER2, &img_width, &img_height);
     game->graph.img_collect = mlx_xpm_file_to_image(game->graph.mlx, selected_collect, &img_width, &img_height);
     game->graph.img_exit1 = mlx_xpm_file_to_image(game->graph.mlx, EXIT1, &img_width, &img_height);
     game->graph.img_exit = mlx_xpm_file_to_image(game->graph.mlx,EXIT, &img_width, &img_height);
+    game->graph.img_WON = mlx_xpm_file_to_image(game->graph.mlx,WON, &img_width, &img_height);
+    game->graph.img_LOSE = mlx_xpm_file_to_image(game->graph.mlx,LOSE, &img_width, &img_height);
     game->graph.img_enemy = mlx_xpm_file_to_image(game->graph.mlx,ENEMY, &img_width, &img_height);
     game->graph.img_enemy2 = mlx_xpm_file_to_image(game->graph.mlx,ENEMY2, &img_width, &img_height);
     place_image(game);

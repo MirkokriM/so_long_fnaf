@@ -6,7 +6,7 @@
 /*   By: mivendit <mivendit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:04:37 by egiubell          #+#    #+#             */
-/*   Updated: 2023/06/08 18:00:16 by mivendit         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:15:11 by mivendit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void direction_W(int id, t_game *game)
             if (game->vars->map[game->map_i - 1][game->map_j] == 'C')
                 game->vars->index_collect--;
             else if (game->vars->map[game->map_i - 1][game->map_j] == 'E' && game->vars->index_collect <= 0)
+            {   
+                
                 exit_game(game, 1);
+            }
             else if (game->vars->map[game->map_i - 1][game->map_j] == 'E' && game->vars->index_collect > 0)
                 return ;
             else if (game->vars->map[game->map_i - 1][game->map_j] == 'G')

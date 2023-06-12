@@ -6,7 +6,7 @@
 /*   By: mivendit <mivendit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:06:40 by egiubell          #+#    #+#             */
-/*   Updated: 2023/06/09 01:00:48 by mivendit         ###   ########.fr       */
+/*   Updated: 2023/06/11 09:12:07 by mivendit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,20 @@ typedef struct s_vars {
 typedef struct s_graph {
 	void	*mlx;
 	void	*win;
-	void	*img_terrain;
 	void	*img_wall;
 	void	*img_collect;
 	void	*img_enemy;
 	void	*img_enemy2;
 	void	*img_player;
+	void	*img_player2;
+	void	*img_WON;
+	void	*img_LOSE;
 	void	*img_exit;
 	void	*img_exit1;
 	int		index_move;
 	int		countdown;
+	void	*win_empty;
+	void	*img_terrain;
 }	t_graph;
 
 typedef struct s_game {
@@ -61,7 +65,9 @@ typedef struct s_game {
 
 #define TERRAIN "./assets/terrain.xpm"
 #define WALL "./assets/wall.xpm"
+
 #define PLAYER "./assets/player.xpm"
+#define PLAYER2 "./assets/player2.xpm"
 
 #define FRAMERATE 60
 #define ANIMATIONDELAY 2000
@@ -77,6 +83,9 @@ typedef struct s_game {
 
 #define ENEMY "./assets/enemy.xpm"
 #define ENEMY2 "./assets/enemy2.xpm"
+
+#define WON "./assets/WON.xpm"
+#define LOSE "./assets/LOSE.xpm"
 
 #define W 119
 #define A 97
@@ -95,6 +104,9 @@ char	*ft_strjoin(const char *s1, const char *s2);
 int		get_map(char *path, t_game *game);
 int		count_line(char *path);
 int		count_column(char *path);
+
+void	exit_frame(t_game *game, int i, int j);
+void	enemy_frame(t_game *game, int i, int j);
 
 void	check_errors(t_game *game);
 int		checks_vars(t_game *game);
