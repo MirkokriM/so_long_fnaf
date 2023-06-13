@@ -130,9 +130,9 @@ int		hook_manage(int keycode, t_game *game);
 
 void	move_condition(t_game *game, int id);
 
-void	direction_W(int id, t_game *game);
-void	direction_S(int id, t_game *game);
-void	direction_A(int id, t_game *game);
-void	direction_D(int id, t_game *game);
+void	direction_w(int id, t_game *game);
+void	direction_s(int id, t_game *game);
+void	direction_a(int id, t_game *game);
+void	direction_d(int id, t_game *game);
 
 #endif

@@ -12,12 +12,12 @@
 
 #include "../include/so_long.h"
 
-int count_column(char *path)
+int	count_column(char *path)
 {
-	int i;
-	char *str;
-	int fd;
-		
+	int		i;
+	char	*str;
+	int		fd;
+
 	i = 0;
 	fd = open(path, O_RDONLY);
 	str = get_next_line(fd);
@@ -35,12 +35,12 @@ int count_column(char *path)
 	return (i);
 }
 
-int count_line(char *path)
+int	count_line(char *path)
 {
-	int i;
-	char *str;
-	int fd;
-		
+	int		i;
+	char	*str;
+	int		fd;
+
 	i = 0;
 	fd = open(path, O_RDONLY);
 	str = get_next_line(fd);
@@ -55,11 +55,11 @@ int count_line(char *path)
 	return (i);
 }
 
-int get_map(char *path, t_game *game)
+int	get_map(char *path, t_game *game)
 {
-	int i;
-	int fd;
-	char *str;
+	int		i;
+	int		fd;
+	char	*str;
 
 	i = 0;
 	game->vars->line = count_line(path);
@@ -78,4 +78,3 @@ int get_map(char *path, t_game *game)
 	check_errors(game);
 	return (0);
 }
-

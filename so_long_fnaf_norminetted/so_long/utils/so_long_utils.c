@@ -12,9 +12,9 @@
 
 #include "../include/so_long.h"
 
-void free_vars(t_game *game)
+void	free_vars(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (game->vars->map[i])
@@ -29,14 +29,13 @@ void free_vars(t_game *game)
 
 void	move_condition(t_game *game, int id)
 {
-		if (id == W || id == UP)
-			direction_W(id, game);
-		else if (id == S || id == DOWN)
-			direction_S(id, game);
-		else if (id == A || id == LEFT)
-			direction_A(id, game);
-		else if (id == D || id == RIGHT)
-			direction_D(id, game);
-		return ;
-
+	if (id == W || id == UP)
+		direction_w(id, game);
+	else if (id == S || id == DOWN)
+		direction_s(id, game);
+	else if (id == A || id == LEFT)
+		direction_a(id, game);
+	else if (id == D || id == RIGHT)
+		direction_d(id, game);
+	return ;
 }

@@ -12,6 +12,18 @@
 
 #include "../include/so_long.h"
 
+void	p_frame_condition(t_game *game)
+{
+	mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
+		game->graph.img_player, game->x_arrow, game->y_arrow);
+	if (game->enemy_frame == 1)
+		mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
+			game->graph.img_player2, game->x_arrow, game->y_arrow);
+	else if (game->enemy_frame == 2)
+		mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
+			game->graph.img_player, game->x_arrow, game->y_arrow);
+}
+
 void	put_correct_image(t_game *game)
 {
 	draw_move(game);
@@ -19,23 +31,12 @@ void	put_correct_image(t_game *game)
 		mlx_put_image_to_window(game->graph.mlx, game->graph.win,
 			game->graph.img_wall, game->x_arrow, game->y_arrow);
 	else if (game->vars->map[game->map_i][game->map_j] == 'P')
-	{
-		mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
-			game->graph.img_player, game->x_arrow, game->y_arrow);
-		if (game->enemy_frame == 1)
-			mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
-				game->graph.img_player2, game->x_arrow, game->y_arrow);
-		else if (game->enemy_frame == 2)
-			mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
-				game->graph.img_player, game->x_arrow, game->y_arrow);
-	}
+		p_frame_condition(game);
 	else if (game->vars->map[game->map_i][game->map_j] == 'C')
 		mlx_put_image_to_window(game->graph.mlx, game->graph.win, \
 			game->graph.img_collect, game->x_arrow, game->y_arrow);
 	else if (game->vars->map[game->map_i][game->map_j] == 'E')
-	{	
 		exit_frame(game, game->y_arrow, game->x_arrow);
-	}
 	else if (game->vars->map[game->map_i][game->map_j] == 'G')
 		enemy_frame(game, game->y_arrow, game->x_arrow);
 	else

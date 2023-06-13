@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void error(t_game *game, int id)
+void	error(t_game *game, int id)
 {
 	printf("Error\n");
 	if (id == 1)
@@ -29,8 +29,8 @@ void error(t_game *game, int id)
 
 int	checks_format(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->vars->line)
@@ -40,25 +40,24 @@ int	checks_format(t_game *game)
 		{
 			j++;
 		}
-		if (j != game->vars->column + 1){
-			
+		if (j != game->vars->column + 1)
+		{
 			return (1);
-
 		}
 		i++;
 	}
 	return (0);
 }
 
-int checks_vars(t_game *game)
+int	checks_vars(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->vars->line)
 	{
-		j= 0;
+		j = 0;
 		while (j < game->vars->column)
 		{
 			if (game->vars->map[i][j] == 'P')
@@ -71,29 +70,41 @@ int checks_vars(t_game *game)
 		}
 		i++;
 	}
-	if (game->vars->player < 1 || game->vars-> index_collect < 1 || game->vars->exit < 1 ||
-		game->vars->player > 1 || game->vars-> exit > 1)
+	if (game->vars->player < 1 || game->vars-> index_collect < 1 \
+		|| game->vars->exit < 1 || game->vars->player > 1 \
+			|| game->vars-> exit > 1)
 		return (1);
 	return (0);
 }
 
-void check_errors(t_game *game)
+void	if_check_state(t_game *game, int i, int j)
+{	
+	if ((game->vars->map[0][j] != '1' \
+		|| game->vars->map[game->vars->line - 1][j] != '1') ||
+			(game->vars->map[i][0] != '1' \
+				|| game->vars->map[i][game->vars->column - 1] != '1'))
+		error(game, 1);
+	if (game->vars->map[i][j] != '0' \
+		&& game->vars->map[i][j] != '1' \
+			&& game->vars->map[i][j] != 'C' &&
+				game->vars->map[i][j] != 'E' \
+					&& game->vars->map[i][j] != 'P' \
+						&& game->vars->map[i][j] != 'G' )
+		error(game, 2);
+}
+
+void	check_errors(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->vars->line)
 	{
-		j= 0;
+		j = 0;
 		while (j < game->vars->column)
 		{
-			if ((game->vars->map[0][j] != '1' || game->vars->map[game->vars->line - 1][j] != '1') ||
-				(game->vars->map[i][0] != '1' || game->vars->map[i][game->vars->column - 1] != '1'))
-					error(game, 1);
-			if (game->vars->map[i][j] != '0' && game->vars->map[i][j] != '1' && game->vars->map[i][j] != 'C' && 
-				game->vars->map[i][j] != 'E' && game->vars->map[i][j] != 'P' && game->vars->map[i][j] != 'G' )
-					error(game, 2);
+			if_check_state(game, i, j);
 			j++;
 		}
 		i++;
