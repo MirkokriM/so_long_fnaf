@@ -52,4 +52,3 @@ int	main(int ac, char **av)
 	get_map(path, game);
 	mlx_manage(game);
 }
-

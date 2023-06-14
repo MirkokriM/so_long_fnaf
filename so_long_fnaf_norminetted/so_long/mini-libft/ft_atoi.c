@@ -23,7 +23,6 @@ int	ft_check_num(const char *string)
 			return (1);
 		i++;
 	}
-
 	if (i > 10 || (i == 10 && ft_strcmp(string, "2147483647") > 0))
 		return (1);
 	return (0);

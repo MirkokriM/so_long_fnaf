@@ -44,8 +44,3 @@ void	update_exit(t_game *game, int map_i, int map_j)
 	game->vars->exit_x = map_j;
 	game->vars->exit_y = map_i;
 }
-
-// void final_frame(t_game *game)
-// {
-	
-// }
