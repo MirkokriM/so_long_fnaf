@@ -13,7 +13,7 @@
 NAME	= libft.a
 SRC		= ft_bzero.c ft_itoa.c ft_putendl.c ft_strdel.c \
 ft_strequ.c ft_strjoin.c ft_putchar.c ft_putstr.c ft_strlen.c\
-ft_strncmp.c ft_strcmp.c
+ft_strncmp.c ft_strcmp.c ft_atoi.c
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g

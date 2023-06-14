@@ -28,6 +28,7 @@ void	init_struct(t_game *game, t_graph *graph)
 	graph->index_move = 0;
 	game->enemy_animation_timer = 0;
 	game->enemy_frame = 0;
+	game->time_count = 0;
 }
 
 int	main(int ac, char **av)
@@ -37,10 +38,18 @@ int	main(int ac, char **av)
 
 	game = (t_game *)malloc (sizeof (t_game));
 	game->vars = (t_vars *)malloc (sizeof (t_vars));
-	if (ac != 2)
+	if (ac != 2 && ac != 3)
+		return (printf("Usage error: ./so_long <map_path.ber> \
+[countdown]\n"), 0);
+	else if (ac == 2)
+		game->countdown = CDOWN;
+	else
+		game->countdown = ft_atoi(av[2]);
+	if (game->countdown == -1 || game->countdown == 0)
 		return (printf("Input error!\n"), 0);
 	path = av[1];
 	init_struct(game, &game->graph);
 	get_map(path, game);
 	mlx_manage(game);
 }
+

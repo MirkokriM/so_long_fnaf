@@ -65,7 +65,7 @@ int	checks_vars(t_game *game)
 			else if (game->vars->map[i][j] == 'C')
 				game->vars->index_collect++;
 			if (game->vars->map[i][j] == 'E')
-				game->vars->exit++;
+				update_exit(game, i, j);
 			j++;
 		}
 		i++;

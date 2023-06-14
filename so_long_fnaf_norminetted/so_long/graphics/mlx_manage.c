@@ -31,7 +31,7 @@ char	*select_random_collect(int random_number)
 }
 
 int	update_enemy_animation(t_game *game)
-{
+{	
 	game->enemy_animation_timer += FRAMERATE;
 	if (game->enemy_animation_timer >= ANIMATIONDELAY)
 	{
@@ -42,6 +42,7 @@ int	update_enemy_animation(t_game *game)
 		game->enemy_animation_timer = 0;
 	}
 	place_image(game);
+	draw_time(game);
 	return (0);
 }
 

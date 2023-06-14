@@ -58,6 +58,8 @@ int	hook_manage(int keycode, t_game *game)
 				|| (keycode == D || keycode == RIGHT) \
 				|| (keycode == S || keycode == DOWN))
 	{
+		if (!game->time_count)
+			game->time_count = get_time();
 		move(keycode, game);
 		game->graph.index_move ++;
 		draw_move(game);

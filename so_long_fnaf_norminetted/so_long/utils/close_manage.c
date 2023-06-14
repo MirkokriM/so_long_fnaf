@@ -21,7 +21,7 @@ int	close_win(t_graph *graph)
 }
 
 int	close_winning(t_graph *graph)
-{
+{	
 	mlx_destroy_window(graph->mlx, graph->win);
 	free(graph->mlx);
 	ft_printf("U WIN! LMAO\n");
@@ -37,3 +37,15 @@ int	close_lose(t_graph *graph)
 	ft_printf("Move Counter: %d\n", graph->index_move + 1);
 	exit(0);
 }
+
+void	update_exit(t_game *game, int map_i, int map_j)
+{
+	game->vars->exit++;
+	game->vars->exit_x = map_j;
+	game->vars->exit_y = map_i;
+}
+
+// void final_frame(t_game *game)
+// {
+	
+// }

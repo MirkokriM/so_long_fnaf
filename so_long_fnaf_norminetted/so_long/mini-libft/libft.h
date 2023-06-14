@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+int                 ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				ft_strdel(char **as);
 int					ft_strequ(char const *s1, char const *s2);
